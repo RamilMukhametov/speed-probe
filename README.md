@@ -6,8 +6,6 @@
 A command-line download throughput probe: N sequential HTTP requests to a given
 URL, reporting average response time, total payload, and throughput in MB/s.
 
-Test assignment for the Python Developer (AD Robot) position at Eto Legko.
-
 ## Features
 
 - Sequential requests with a per-request timeout (10 by default, per the assignment)
