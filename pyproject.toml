@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speed-probe"
+version = "1.0.0"
+description = "Sequential HTTP download throughput probe"
+requires-python = ">=3.10"
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pylint>=3.0"]
+
+[project.scripts]
+speed-probe = "speed_probe.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# ============ pylint: production gate ============
+[tool.pylint.main]
+max-line-length = 100
+good-names = ["i", "j", "k", "n", "id", "db", "ok", "ex"]
+load-plugins = [
+  "pylint.extensions.bad_builtin",
+  "pylint.extensions.redefined_variable_type",
+]
+
+[tool.pylint."messages control"]
+disable = [
+  "too-few-public-methods",  # dataclass is a data container, not behaviour
+]
+
+[tool.setuptools]
+packages = ["speed_probe"]
